@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Delete redactor?</h1>
-  <form action="" method="post">
-    {% csrf_token %}
-
-    <input type="submit" value="Yes" class="btn btn-danger">
-  </form>
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title">Delete redactor?</h1>
+      <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Yes" class="btn btn-danger">
+      </form>
+    </div>
+  </div>
 {% endblock %}

@@ -1,35 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ redactor.username }}</h1>
-  <a href="{% url "press:redactor-update" pk=redactor.id %}" class="btn btn-primary link-to-page">Update redactor</a>
-<table class="table">
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Email</th>
-    <th>Years of experience</th>
-    <th>Newspapers</th>
-  </tr>
-  <tr>
-    <td>{{ redactor.first_name }}</td>
-    <td>{{ redactor.last_name }}</td>
-    <td>{{ redactor.email }}</td>
-    <td>{{ redactor.years_of_experience }}</td>
-    <td>
-      <ul>
-        {% for newspaper in redactor.newspapers.all %}
-          <li>{{ newspaper }}</li>
-        {% endfor %}
-      </ul>
-    </td>
-  </tr>
-  <a href="{% url "press:redactor-delete" pk=redactor.id %}" class="btn btn-danger link-to-page">
-    Delete redactor
-  </a>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">{{ redactor.username }}</h1>
+        <a href="{% url "press:redactor-update" pk=redactor.id %}" class="btn btn-primary">Update redactor</a>
+        <a href="{% url "press:redactor-delete" pk=redactor.id %}" class="btn btn-danger ml-2">Delete redactor</a>
+        <table class="table mt-4">
+          <thead>
+            <tr>
+              <th scope="col">First name</th>
+              <th scope="col">Last name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Years of experience</th>
+              <th scope="col">Newspapers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ redactor.first_name }}</td>
+              <td>{{ redactor.last_name }}</td>
+              <td>{{ redactor.email }}</td>
+              <td>{{ redactor.years_of_experience }}</td>
+              <td>
+                <ul>
+                  {% for newspaper in redactor.newspapers.all %}
+                    <li>{{ newspaper }}</li>
+                  {% endfor %}
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 {% endblock %}
-
-
-
-
-</table>

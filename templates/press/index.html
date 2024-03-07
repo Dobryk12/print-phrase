@@ -2,29 +2,46 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
+<div class="container-fluid" style="background-color: #f8f9fa; padding: 20px;">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mt-5 text-dark">Welcome to the Print Phrase Agency</h1>
+        </div>
+    </div>
 
-<body>
-    <h1>Welcome to the Print Phrase Agency</h1>
-    
-    <h2>Latest Newspapers</h2>
-    <ul>
-        {% for newspaper in newspapers %}
-          <li><a href="{% url "press:newspaper-detail" pk=newspaper.id %}">{{ newspaper.name }} - {{ newspaper.published_date }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="mt-4 text-dark">Latest Newspapers</h2>
+            <ul class="list-group">
+                {% for newspaper in newspapers %}
+                <li class="list-group-item" style="background-color: #fff;">
+                    <a href="{% url 'press:newspaper-detail' pk=newspaper.id %}" class="text-dark font-weight-bold">{{ newspaper.name }}</a> - {{ newspaper.published_date }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
 
-    <h2>Redactors with Most Publications</h2>
-    <ul>
-        {% for redactor in redactors_top %}
-          <li><a href="{% url "press:redactor-detail" pk=redactor.id %}">{{ redactor.username }} - {{ redactor.num_publications }}</a></li>
-        {% endfor %}
-    </ul>
+        <div class="col-md-6">
+            <h2 class="mt-4 text-dark">Redactors with Most Publications</h2>
+            <ul class="list-group">
+                {% for redactor in redactors_top %}
+                <li class="list-group-item" style="background-color: #fff;">
+                    <a href="{% url 'press:redactor-detail' pk=redactor.id %}" class="text-dark font-weight-bold">{{ redactor.username }}</a> - {{ redactor.num_publications }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 
-    <h2>The most popular topics</h2>
-    <ul>
-        {% for topic in topics %}
-          <li>{{ topic.name }} - {{ topic.newspaper_set.count }}</li>
-        {% endfor %}
-    </ul>
-</body>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mt-4 text-dark">The Most Popular Topics</h2>
+            <ul class="list-group">
+                {% for topic in topics %}
+                  <li class="list-group-item" style="background-color: #fff;"><a href="{% url "press:topic-detail" pk=topic.id %}">{{ topic.name }} - {{ topic.newspapers.count }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock %}
