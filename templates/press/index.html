@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+
+<body>
+    <h1>Welcome to the Print Phrase Agency</h1>
+    
+    <h2>Latest Newspapers</h2>
+    <ul>
+        {% for newspaper in newspapers %}
+          <li><a href="{% url "press:newspaper-detail" pk=newspaper.id %}">{{ newspaper.name }} - {{ newspaper.published_date }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>Redactors with Most Publications</h2>
+    <ul>
+        {% for redactor in redactors_top %}
+          <li><a href="{% url "press:redactor-detail" pk=redactor.id %}">{{ redactor.username }} - {{ redactor.num_publications }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h2>The most popular topics</h2>
+    <ul>
+        {% for topic in topics %}
+          <li>{{ topic.name }} - {{ topic.newspaper_set.count }}</li>
+        {% endfor %}
+    </ul>
+</body>
+{% endblock %}
