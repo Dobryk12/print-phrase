@@ -7,7 +7,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from press.forms import NewspaperSearchForm, NewspaperForm, RedactorSearchForm
+from press.forms import NewspaperSearchForm, NewspaperForm, RedactorSearchForm, RedactorFormForLogin, \
+    RedactorFormForUpdate
 from press.models import Newspaper, Topic, Redactor
 
 
@@ -88,3 +89,19 @@ class RedactorListView(generic.ListView):
 
 class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Redactor
+
+
+class RedactorCreateView(generic.CreateView):
+    model = Redactor
+    form_class = RedactorFormForLogin
+    success_url = reverse_lazy("login")
+
+
+class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Redactor
+    success_url = reverse_lazy("press:redactor-list")
+
+
+class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Redactor
+    form_class = RedactorFormForUpdate
