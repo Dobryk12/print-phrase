@@ -47,7 +47,7 @@ class RedactorFormForLogin(forms.ModelForm):
 class RedactorFormForUpdate(forms.ModelForm):
     class Meta:
         model = Redactor
-        fields = ["username", "first_name", "last_name", "years_of_experience", "email"]
+        fields = ["username", "first_name", "last_name", "years_of_experience", "email", "password"]
 
 
 class RedactorSearchForm(forms.Form):

@@ -12,7 +12,7 @@ from press.forms import NewspaperSearchForm, NewspaperForm, RedactorSearchForm, 
 from press.models import Newspaper, Topic, Redactor
 
 
-# @login_required
+@login_required
 def index(request: HttpRequest) -> HttpResponse:
     """View function for the home page of the site."""
     newspapers = Newspaper.objects.all()
@@ -69,7 +69,7 @@ class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy("press:newspaper-list")
 
 
-class RedactorListView(generic.ListView):
+class RedactorListView(LoginRequiredMixin, generic.ListView):
     model = Redactor
     context_object_name = "redactor_list"
     paginate_by = 3
@@ -105,3 +105,4 @@ class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
 class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Redactor
     form_class = RedactorFormForUpdate
+    success_url = reverse_lazy("press:redactor-list")
