@@ -33,9 +33,11 @@ class NewspaperSearchForm(forms.Form):
 class RedactorFormForLogin(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Redactor
-        fields = UserCreationForm.Meta.fields + ("first_name",
-                                                  "last_name",
-                                                  "years_of_experience",)
+        fields = UserCreationForm.Meta.fields + (
+            "first_name",
+            "last_name",
+            "years_of_experience"
+        )
         widgets = {
             "years_of_experience": forms.NumberInput(
                 attrs={
