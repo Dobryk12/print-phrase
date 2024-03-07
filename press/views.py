@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from press.forms import NewspaperSearchForm, NewspaperForm, RedactorSearchForm, RedactorFormForLogin, \
-    RedactorFormForUpdate
+    RedactorFormForUpdate, TopicSearchForm, TopicForm
 from press.models import Newspaper, Topic, Redactor
 
 
@@ -17,15 +17,12 @@ def index(request: HttpRequest) -> HttpResponse:
     """View function for the home page of the site."""
     newspapers = Newspaper.objects.all()
     topics = Topic.objects.all()
-    # newspapers_of_topic = topics.newspaper.all()
     redactors_top = get_user_model().objects.annotate(num_publications=Count('newspapers')).order_by('-num_publications')
-    # newspapers_of_topic = topics.newspaper_set.all
 
     context = {
         "topics": topics,
         "newspapers": newspapers,
         "redactors_top": redactors_top,
-        # "newspapers_of_topic": newspapers_of_topic
     }
 
     return render(request, "press/index.html", context)
@@ -107,3 +104,42 @@ class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Redactor
     form_class = RedactorFormForUpdate
     success_url = reverse_lazy("press:redactor-list")
+
+
+class TopicListView(LoginRequiredMixin, generic.ListView):
+    model = Topic
+    context_object_name = "topic_list"
+    paginate_by = 3
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(TopicListView, self).get_context_data(**kwargs)
+        context["search_form"] = TopicSearchForm()
+        return context
+
+    def get_queryset(self):
+        queryset = Topic.objects.all()
+        name = self.request.GET.get("username")
+        if name:
+            return queryset.filter(name__icontains=name)
+        return queryset
+
+
+class TopicDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Topic
+
+
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Topic
+    form_class = TopicForm
+    success_url = reverse_lazy("press:topic-list")
+
+
+class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Topic
+    success_url = reverse_lazy("press:topic-list")
+
+
+class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Topic
+    form_class = TopicForm
+    success_url = reverse_lazy("press:topic-list")

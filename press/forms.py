@@ -49,7 +49,14 @@ class RedactorFormForLogin(UserCreationForm):
 class RedactorFormForUpdate(forms.ModelForm):
     class Meta:
         model = Redactor
-        fields = ["username", "first_name", "last_name", "years_of_experience", "email", "password"]
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "years_of_experience",
+            "email",
+            "password"
+        ]
 
 
 class RedactorSearchForm(forms.Form):
@@ -59,5 +66,32 @@ class RedactorSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(
             attrs={"placeholder": "Search by username"}
+        )
+    )
+
+
+class TopicForm(forms.ModelForm):
+    name = forms.CharField()
+
+    class Meta:
+        model = Topic
+        fields = "__all__"
+        widgets = {
+            "description": forms.Textarea(
+                attrs={
+                    "placeholder": "Enter a description",
+                    "class": "form-control"
+                }
+            )
+        }
+
+
+class TopicSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=100,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name"}
         )
     )
