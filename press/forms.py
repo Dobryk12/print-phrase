@@ -28,3 +28,34 @@ class NewspaperSearchForm(forms.Form):
             attrs={"placeholder": "Search by name"}
         )
     )
+
+
+class RedactorFormForLogin(forms.ModelForm):
+    class Meta:
+        model = Redactor
+        fields = ["username", "first_name", "last_name", "password"]
+        widgets = {
+            "years_of_experience": forms.NumberInput(
+                attrs={
+                    "placeholder": "Enter your years of experience",
+                    "class": "form-control"
+                }
+            )
+        }
+
+
+class RedactorFormForUpdate(forms.ModelForm):
+    class Meta:
+        model = Redactor
+        fields = ["username", "first_name", "last_name", "years_of_experience", "email"]
+
+
+class RedactorSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=100,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by username"}
+        )
+    )

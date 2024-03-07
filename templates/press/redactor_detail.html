@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+<h1>{{ redactor.username }}</h1>
+  <a href="{% url "press:redactor-update" pk=redactor.id %}" class="btn btn-primary link-to-page">Update redactor</a>
+<table class="table">
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Years of experience</th>
+    <th>Newspapers</th>
+  </tr>
+  <tr>
+    <td>{{ redactor.first_name }}</td>
+    <td>{{ redactor.last_name }}</td>
+    <td>{{ redactor.email }}</td>
+    <td>{{ redactor.years_of_experience }}</td>
+    <td>
+      <ul>
+        {% for newspaper in redactor.newspapers.all %}
+          <li>{{ newspaper }}</li>
+        {% endfor %}
+      </ul>
+    </td>
+  </tr>
+  <a href="{% url "press:redactor-delete" pk=redactor.id %}" class="btn btn-danger link-to-page">
+    Delete redactor
+  </a>
+{% endblock %}
+
+
+
+
+</table>
