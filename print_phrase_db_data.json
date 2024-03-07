@@ -1,0 +1,183 @@
+[
+  {
+    "model": "press.topic",
+    "pk": 1,
+    "fields": {
+      "name": "Politics"
+    }
+  },
+  {
+    "model": "press.topic",
+    "pk": 2,
+    "fields": {
+      "name": "Technology"
+    }
+  },
+  {
+    "model": "press.topic",
+    "pk": 3,
+    "fields": {
+      "name": "Sports"
+    }
+  },
+  {
+    "model": "press.redactor",
+    "pk": 1,
+    "fields": {
+      "username": "johndoe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "years_of_experience": 5
+    }
+  },
+  {
+    "model": "press.redactor",
+    "pk": 2,
+    "fields": {
+      "username": "janedoe",
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "years_of_experience": 3
+    }
+  },
+  {
+    "model": "press.redactor",
+    "pk": 3,
+    "fields": {
+      "username": "mikemiller",
+      "first_name": "Mike",
+      "last_name": "Miller",
+      "years_of_experience": 7
+    }
+  },
+  {
+    "model": "press.redactor",
+    "pk": 4,
+    "fields": {
+      "username": "sarahsmith",
+      "first_name": "Sarah",
+      "last_name": "Smith",
+      "years_of_experience": 4
+    }
+  },
+  {
+    "model": "press.redactor",
+    "pk": 5,
+    "fields": {
+      "username": "davidjones",
+      "first_name": "David",
+      "last_name": "Jones",
+      "years_of_experience": 6
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 1,
+    "fields": {
+      "name": "The Daily News",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "published_date": "2022-08-15T12:00:00Z",
+      "topic": 1,
+      "publishers": [1, 2, 3]
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 2,
+    "fields": {
+      "name": "Tech Times",
+      "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "published_date": "2022-08-16T12:00:00Z",
+      "topic": 2,
+      "publishers": [2, 3]
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 3,
+    "fields": {
+      "name": "Sports Weekly",
+      "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "published_date": "2022-08-17T12:00:00Z",
+      "topic": 3,
+      "publishers": [1, 3]
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 4,
+    "fields": {
+      "name": "Political Observer",
+      "content": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "published_date": "2022-08-18T12:00:00Z",
+      "topic": 1,
+      "publishers": [1, 2]
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 5,
+    "fields": {
+      "name": "Tech Review",
+      "content": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "published_date": "2022-08-19T12:00:00Z",
+      "topic": 2,
+      "publishers": [2, 3]
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 6,
+    "fields": {
+      "name": "Sports Recap",
+      "content": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.",
+      "published_date": "2022-08-20T12:00:00Z",
+      "topic": 3,
+      "publishers": [1, 3]
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 7,
+    "fields": {
+      "name": "Political Insight",
+      "content": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
+      "published_date": "2022-08-21T12:00:00Z",
+      "topic": 1,
+      "publishers": [1, 2]
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 8,
+    "fields": {
+      "name": "Technology Update",
+      "content": "Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+      "published_date": "2022-08-22T12:00:00Z",
+      "topic": 2,
+      "publishers": [2, 3]
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 9,
+    "fields": {
+      "name": "Sports Highlights",
+      "content": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.",
+      "published_date": "2022-08-23T12:00:00Z",
+      "topic": 3,
+      "publishers": [1, 3]
+    }
+  },
+  {
+    "model": "press.newspaper",
+    "pk": 10,
+    "fields": {
+      "name": "Political Commentary",
+      "content": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+      "published_date": "2022-08-24T12:00:00Z",
+      "topic": 1,
+      "publishers": [1, 2]
+    }
+  }
+]
