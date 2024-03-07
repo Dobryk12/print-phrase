@@ -17,6 +17,7 @@ def index(request: HttpRequest) -> HttpResponse:
     """View function for the home page of the site."""
     newspapers = Newspaper.objects.all()
     topics = Topic.objects.all()
+    # newspapers_of_topic = topics.newspaper.all()
     redactors_top = get_user_model().objects.annotate(num_publications=Count('newspapers')).order_by('-num_publications')
     # newspapers_of_topic = topics.newspaper_set.all
 
