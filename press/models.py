@@ -4,7 +4,10 @@ from django.db import models
 
 
 class Redactor(AbstractUser):
-    years_of_experience = models.IntegerField(null=True, blank=True)
+    years_of_experience = models.IntegerField(
+        null=True,
+        blank=True
+    )
 
     class Meta:
         verbose_name = "redactor"
@@ -28,8 +31,17 @@ class Newspaper(models.Model):
     name = models.CharField(max_length=100)
     content = models.TextField(max_length=266)
     published_date = models.DateTimeField(auto_now_add=True)
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name="newspapers", null=True, blank=True)
-    publishers = models.ManyToManyField(get_user_model(), related_name='newspapers')
+    topic = models.ForeignKey(
+        Topic,
+        on_delete=models.CASCADE,
+        related_name="newspapers",
+        null=True,
+        blank=True
+    )
+    publishers = models.ManyToManyField(
+        get_user_model(),
+        related_name='newspapers'
+    )
 
     class Meta:
         ordering = ['-published_date',]

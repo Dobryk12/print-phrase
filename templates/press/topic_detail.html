@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{ topic.name }}</h1>
-  <a href="{% url "press:topic-update" pk=topic.id %}" class="btn btn-primary link-to-page">Update Topic's name</a>
-  <h4>Newspapers of following topic</h4>
-  <ul>
-    {% for newspaper in topic.newspapers.all %}
-      <li><a href="{% url "press:newspaper-detail" pk=newspaper.id %}">{{ newspaper }}</a></li>
-    {% endfor %}
-  </ul>
-  <a href="{% url "press:topic-delete" pk=topic.id %}" class="btn btn-danger link-to-page">
-    Delete topic
-  </a>
+  <div class="container">
+    <h1 class="display-4">{{ topic.name }}</h1>
+    <a href="{% url 'press:topic-update' pk=topic.id %}" class="btn btn-primary mb-3">Update Topic's Name</a>
+    <h4>Newspapers of the following topic</h4>
+    <ul class="list-group mb-3">
+      {% for newspaper in topic.newspapers.all %}
+        <li class="list-group-item"><a href="{% url 'press:newspaper-detail' pk=newspaper.id %}">{{ newspaper }}</a></li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'press:topic-delete' pk=topic.id %}" class="btn btn-danger">Delete Topic</a>
+  </div>
 {% endblock %}

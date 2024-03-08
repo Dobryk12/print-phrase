@@ -2,11 +2,25 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>Topic creation</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Create a New Topic</h2>
+          </div>
+          <div class="card-body">
+            <form action="" method="post" novalidate>
+              {% csrf_token %}
+              {{ form|crispy }}
 
-    <input type="submit" value="Submit" class="btn btn-primary">
-  </form>
+              <div class="form-group mt-3">
+                <button type="submit" class="btn btn-success">Create Topic</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

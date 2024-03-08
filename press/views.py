@@ -7,9 +7,20 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from press.forms import NewspaperSearchForm, NewspaperForm, RedactorSearchForm, RedactorFormForLogin, \
-    RedactorFormForUpdate, TopicSearchForm, TopicForm
-from press.models import Newspaper, Topic, Redactor
+from press.forms import (
+    NewspaperSearchForm,
+    NewspaperForm,
+    RedactorSearchForm,
+    RedactorFormForLogin,
+    RedactorFormForUpdate,
+    TopicSearchForm,
+    TopicForm
+)
+from press.models import (
+    Newspaper,
+    Topic,
+    Redactor
+)
 
 
 @login_required
@@ -17,7 +28,9 @@ def index(request: HttpRequest) -> HttpResponse:
     """View function for the home page of the site."""
     newspapers = Newspaper.objects.all()
     topics = Topic.objects.all()
-    redactors_top = get_user_model().objects.annotate(num_publications=Count('newspapers')).order_by('-num_publications')
+    redactors_top = (get_user_model().
+                     objects.annotate(num_publications=Count('newspapers')).
+                     order_by('-num_publications'))
 
     context = {
         "topics": topics,
