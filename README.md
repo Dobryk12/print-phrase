@@ -22,4 +22,4 @@ Password: stan12345
 * Also you can download data from print_phrase_db_data.json, by using command:
 ```python manage.py loaddata print_phrase_db_data.json```
 
-![Website interface](demo.png)
+![Website interface](demo.jpg)
