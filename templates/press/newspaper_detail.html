@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h1 class="card-title">{{ newspaper.name }}</h1>
+        </div>
+        <div class="card-body">
+          <h4 class="card-subtitle mb-2 text-muted">{{ newspaper.published_date }}</h4>
+          <p class="card-text">{{ newspaper.content }}</p>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'press:newspaper-delete' pk=newspaper.id %}" class="btn btn-danger">Delete newspaper</a>
+          <a href="{% url 'press:newspaper-update' pk=newspaper.id %}" class="btn btn-primary">Update newspaper</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

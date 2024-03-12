@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+<div class="container-fluid py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h1 class="text-center mb-4">Our Topics</h1>
+      <form method="get" action="" class="form-inline justify-content-center mb-3">
+        {{ search_form|crispy}}
+        <button class="btn btn-secondary ml-2" type="submit">Search 🕵️</button>
+      </form>
+      <div class="card">
+        <div class="card-body">
+          {% if topic_list %}
+          <ul class="list-group list-group-flush">
+            {% for topic in topic_list %}
+            <li class="list-group-item">
+              <a href="{% url "press:topic-detail" pk=topic.id %}" class="text-decoration-none">{{ topic.name }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <p class="text-muted text-center mt-4">No topics found.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="container-fluid py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h1 class="text-center mb-4">Our Redactors</h1>
+        <form method="get" action="" class="form-inline justify-content-center mb-3">
+          {{ search_form|crispy }}
+          <button class="btn btn-secondary ml-2" type="submit">Search 🕵️</button>
+        </form>
+        {% if redactor_list %}
+        <div class="list-group">
+          {% for redactor in redactor_list %}
+          <a href="{% url "press:redactor-detail" pk=redactor.id %}" class="list-group-item list-group-item-action">
+            <h5 class="mb-1" style="color: green;">{{ redactor.username }}</h5>
+            <p class="mb-1">{{ redactor.first_name }} {{ redactor.last_name }}</p>
+            <small class="text-muted">Years of experience: {{ redactor.years_of_experience }}</small>
+          </a>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-muted text-center">No redactors found.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

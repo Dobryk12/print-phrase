@@ -1,0 +1,23 @@
+<ul class="sidebar-nav list-group">
+  {% if user.is_authenticated %}
+    <li class="list-group-item">Welcome, <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a>!</li>
+    <li class="list-group-item"><form method="post" action="{% url 'logout' %}" class="logout-form">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger btn-sm">Logout</button>
+      </form></li>
+  {% else %}
+    <li class="list-group-item"><form method="post" action="{% url 'login'%}?next={{request.path}}" class="login-form">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-primary btn-sm">Login</button>
+      </form></li>
+  {% endif %}
+</ul>
+
+<br>
+
+<ul class="sidebar-nav list-group">
+  <li class="list-group-item"><a href="{% url "press:index" %}" class="text-dark"><i class="fas fa-home mr-2"></i>Home</a></li>
+  <li class="list-group-item"><a href="{% url "press:newspaper-list" %}" class="text-dark"><i class="fas fa-newspaper mr-2"></i>Our newspapers</a> </li>
+  <li class="list-group-item"><a href="{% url "press:redactor-list" %}" class="text-dark"><i class="fas fa-users mr-2"></i>Our redactors</a></li>
+  <li class="list-group-item"><a href="{% url "press:topic-list" %}" class="text-dark"><i class="fas fa-book mr-2"></i>Our topics</a></li>
+</ul>

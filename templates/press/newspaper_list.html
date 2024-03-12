@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="container-fluid py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h1 class="text-center mb-4" style="color: #333;">Explore Our Newspapers</h1>
+          <form method="get" action="" class="form-inline justify-content-center mb-3">
+            {{ search_form|crispy }}
+            <button class="btn btn-secondary ml-2" type="submit">Search 🕵️</button>
+          </form>
+          <a href="{% url "press:newspaper-create" %}" class="btn btn-primary mb-3">+ New newspaper</a>
+          {% if newspaper_list %}
+          <div class="list-group">
+            {% for newspaper in newspaper_list %}
+            <a href="{% url "press:newspaper-detail" pk=newspaper.id %}" class="list-group-item list-group-item-action">
+              <h5 class="mb-1" style="color: #333;">{{ newspaper.name }}</h5>
+              <p class="mb-1" style="color: #555;">{{ newspaper.content }}</p>
+              <small class="text-muted">{{ newspaper.published_date }} - {{ newspaper.topic }}</small>
+            </a>
+            {% endfor %}
+          </div>
+          {% else %}
+          <p class="text-muted text-center">No newspapers found.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
