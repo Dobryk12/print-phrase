@@ -11,6 +11,8 @@ Python3 and Django must be already installed
 git clone https://github.com/Dobryk12/print-phrase.git
 python3 -m venv venv
 source venv/bin/activate
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver
 ```
 
