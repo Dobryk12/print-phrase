@@ -2,6 +2,9 @@
 
 Django project for managing redactors and newspapers in newspaper agency
 
+## Check it out!
+[PrintPhrase project deployed to Render](https://print-phrase1.onrender.com/)
+
 ## Installation
 
 Python3 and Django must be already installed
@@ -23,5 +26,9 @@ Login: Stan
 Password: stan12345
 * Also you can download data from print_phrase_db_data.json, by using command:
 ```python manage.py loaddata print_phrase_db_data.json```
+
+* Login: Stan
+* password: stan12345
+
 
 ![Website interface](demo.jpg)
