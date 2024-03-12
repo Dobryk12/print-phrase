@@ -4,6 +4,7 @@ from press.models import Redactor, Topic, Newspaper
 
 
 class ModelsTests(TestCase):
+
     def test_redactor_str(self):
         redactor = Redactor.objects.create(
             username="test_username",

@@ -6,6 +6,7 @@ from press.models import Newspaper, Redactor, Topic
 
 
 class TestLoginRequired(TestCase):
+
     def setUp(self):
         self.client = Client()
         self.redactor = get_user_model().objects.create_user(
