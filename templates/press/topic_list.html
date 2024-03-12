@@ -6,7 +6,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-8">
       <h1 class="text-center mb-4">Our Topics</h1>
-      <a href="{% url "press:topic-create" %}">Create new topic</a>
+      <a href="{% url "press:topic-create" %}" class="btn btn-primary mb-3">Create new topic</a>
       <form method="get" action="" class="form-inline justify-content-center mb-3">
         {{ search_form|crispy}}
         <button class="btn btn-secondary ml-2" type="submit">Search 🕵️</button>
