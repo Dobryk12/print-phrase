@@ -78,14 +78,6 @@ class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = "__all__"
-        widgets = {
-            "description": forms.Textarea(
-                attrs={
-                    "placeholder": "Enter a description",
-                    "class": "form-control"
-                }
-            )
-        }
 
 
 class TopicSearchForm(forms.Form):
