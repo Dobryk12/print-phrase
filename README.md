@@ -2,6 +2,9 @@
 
 Django project for managing redactors and newspapers in newspaper agency
 
+## Check it out!
+[PrintPhrase project deployed to Render](https://print-phrase1.onrender.com/)
+
 ## Installation
 
 Python3 and Django must be already installed
