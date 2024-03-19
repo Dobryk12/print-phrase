@@ -3,18 +3,14 @@
 
 {% block content %}
 <div class="container">
-  <h1 class="mb-4">Update Newspaper</h1>
+  <h1 class="mb-4">Newspaper</h1>
   <div class="row justify-content-center">
     <div class="col-lg-6">
       <form action="" method="post" novalidate>
         {% csrf_token %}
         <div class="form-group">
           <label for="{{ form.name.id_for_label }}"></label>
-          {{ form.name|as_crispy_field }}
-        </div>
-        <div class="form-group">
-          <label for="{{ form.content.id_for_label }}"></label>
-          {{ form.content|as_crispy_field }}
+          {{ form|crispy }}
         </div>
         <input type="submit" value="Submit" class="btn btn-primary">
       </form>
