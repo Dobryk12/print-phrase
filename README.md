@@ -22,13 +22,13 @@ python manage.py runserver
 ## Features 
 
 * You can create superuser by your own, or use which is already exist:
-Login: Stan
-Password: stan12345
+
 * Also you can download data from print_phrase_db_data.json, by using command:
 ```python manage.py loaddata print_phrase_db_data.json```
 
-* Login: Stan
-* password: stan12345
+- After loading data from fixture you can use following superuser:
+  - Login: `Serhiy`
+  - Password: `serhiy123`
 
 
 ![Website interface](demo.jpg)
