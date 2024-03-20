@@ -5,8 +5,12 @@
     <div class="card">
       <div class="card-body">
         <h1 class="card-title">{{ redactor.username }}</h1>
-        <a href="{% url "press:redactor-update" pk=redactor.id %}" class="btn btn-primary">Update redactor</a>
-        <a href="{% url "press:redactor-delete" pk=redactor.id %}" class="btn btn-danger ml-2">Delete redactor</a>
+        {% if redactor == user %}
+          <div>
+          <a href="{% url "press:redactor-update" pk=redactor.id %}" class="btn btn-primary">Update redactor</a>
+          <a href="{% url "press:redactor-delete" pk=redactor.id %}" class="btn btn-danger ml-2">Delete redactor</a>
+          </div>
+        {% endif %}
         <table class="table mt-4">
           <thead>
             <tr>

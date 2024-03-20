@@ -99,7 +99,7 @@ class RedactorListView(LoginRequiredMixin, generic.ListView):
 
 
 class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Redactor
+    model = get_user_model()
 
 
 class RedactorCreateView(generic.CreateView):
