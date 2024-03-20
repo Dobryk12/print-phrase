@@ -57,7 +57,6 @@ class RedactorFormForUpdate(forms.ModelForm):
             "last_name",
             "years_of_experience",
             "email",
-            "password"
         ]
 
 
